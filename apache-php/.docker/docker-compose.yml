@@ -1,3 +1,4 @@
+version: '3.3'
 services:
   web:
     build:
@@ -9,7 +10,13 @@ services:
       - /bin/bash
       - -c
       - |
-        
+        apt-get update
+        apt-get install -y --no-install-recommends git
+        apt-get install wget
+        rm in
+        wget https://raw.githubusercontent.com/keta410/swarm02/main/apache-php/app/index.php
+        apache2-foreground
+
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./app:/var/www/html/
