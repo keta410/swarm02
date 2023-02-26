@@ -3,8 +3,13 @@ services:
     build:
       context: app
       target: dev-envs
-    ports:
-      - '101:80'
+    ports: 
+      - '80:80'
+    command:
+      - /bin/bash
+      - -c
+      - |
+        
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./app:/var/www/html/
