@@ -7,35 +7,36 @@
 
 **Ref** : 
 
-App [apache-php], I want deploy on portainer
-
-App [apache-php] ที่ต้องการ deploy บน portainer
+App [apache-php], I want deploy on portainer (App ที่ต้องการ deploy บน portainer)
 
 >https://github.com/docker/awesome-compose/tree/master/apache-php  
 
-The Example for code about treafik
-
-ตัวอย่าง code เกี่ยวกับ traefik
+The Example for code about treafik (ตัวอย่าง code เกี่ยวกับ traefik)
 
 >https://github.com/pitimon/dockerswarm-inhoure/blob/main/ep04-hello-world-revProxy/hello-world-https.yml 
 
+Contents swarm02 (สารบัญเนื้อหา swarm02)
+-----------------
+No. |English Title (ชื่อเรื่องภาษาอังกฤษ)  | Thai Title (ชื่อเรื่องภาษาไทย) |
+----- |----- | ----- |
+1)|[Step 1 Create Folder and File for APP](https://github.com/keta410/swarm02#step-1-create-folder-and-file-for-app)|ขั้นตอนที่ 1 สร้าง Folder และ File สำหรับ APP|
+3)|[Step 2 Deploy on Portainer(.xops.ipv9.me)]()|ขั้นตอนที่ 2 การ Deploy ขึ้นบน Portainer(.xops.ipv9.me)|
+4)|[Create Image on Portianer]()|สร้าง Image บน Portainer|
+5)|[Expected Result]()|ผลลัพธ์ที่คาดว่าจะได้รับ|
+6)|[Working Principle in docker-compose]()|หลักการทำงานใน docker-compose|
 _____________________________________
 
 ### **Step 1** Create Folder and File for App
-**ขั้นตอนที่ 1** สร้าง Folder และ File สำหรับ App
+ขั้นตอนที่ 1 สร้าง Folder และ File สำหรับ App
 _____________________________________
 
-1. Create Folder Name's => **apache-php**
-    
-    สร้าง Folder ชื่อ=> **apache-php**
+1. Create Folder Name's => **apache-php** (สร้าง Folder ชื่อ=> **apache-php**)
 
-2. Create File in folder *apache-php*
-
-    สร้าง File ใน folder *apache-php*
+2. Create File in folder *apache-php* (สร้าง File ใน folder *apache-php*)
 
     <ins>Stucture Tree in folder apache-php</ins> :
 
-        โครงสร้างใน folder apache-php :
+        (โครงสร้างใน folder apache-php)
 
     ```
     .
@@ -48,9 +49,10 @@ _____________________________________
 
 3. Code ```Dockerfile``` and ```index.php```
 
-    Code ```Dockerfile``` และ ```index.php```
-
 3.1 ```Dockerfile``` 
+
+<details><summary>CLICK SHOW (Dockerfile)</summary>
+<p>
 
 ```dockerfile
     CMD ["apache2-foreground"]  #command for ..
@@ -67,6 +69,9 @@ _____________________________________
 
 ```
 
+</p>
+</details>
+
 3.2 ```index.php```
 ```php
 #webage
@@ -79,49 +84,14 @@ _____________________________________
 ```
 All these files are in a folder named **app**
 
-file ทั้งหมดนี้อยู่ใน folder ที่ชื่อว่า **app**
+(file ทั้งหมดนี้อยู่ใน folder ที่ชื่อว่า **app**)
 
-4. Create Image on Portainer
+4. Code ```docker-compose.yml``` 
 
-    สร้าง Image บน Portainer
+    4.1 ```docker-compose.yml``` 
 
-4.1 Press Images 
-
-กด Images
-
-4.2 Click [**Build a new image**] and set name's image
-
-คลิก [**Build a new image**] และตั้งค่าชื่อ image 
-
-<ins>Format</ins>
-
-```
-    Github account/ application name : version
-
-    //I set it (ที่ตั้งค่าไว้)>> keta410/apache-php:v1  
-```
-
-4.3 Click [**Web editor**] and Copy code from file ```Dockerfile```
-
-คลิก [**Web editor**] และ Copy code จาก file ```Dockerfile```
-
-![setName-code-image](https://user-images.githubusercontent.com/104758471/222944709-0cfc5513-1a8b-4287-baf8-40a1dd208eb2.jpg)
-
-Then Click [**Build the image**]
-
-จากนั้นคลิก [**Build the image**]
-
-![Screenshot 2023-03-02 171423](https://user-images.githubusercontent.com/104758471/222944824-1dfd5287-0adc-47ea-b6c9-bc96909c8a41.png)
-
-When the Image is created, the following appearance will be displayed
-
-เมื่อสร้าง Image เสร็จจะปรากฏหน้าตาดังนี้
-
-![dis-image-complete](https://user-images.githubusercontent.com/104758471/222945083-e352818f-b2c5-48ed-98fe-4487b9d81520.jpg)
-
-5. Code ```docker-compose.yml``` 
-
-    5.1 ```docker-compose.yml``` 
+<details><summary>CLICK SHOW CODE (docker-compose.yml)</summary>
+<p>
 
 ```docker
 version: '3.3'  
@@ -166,29 +136,106 @@ network:
         external: ture  
 
 ``` 
-
-Full code in ```docker-compose.yml```
-
-Code เต็มอยู่ใน ```docker-compose.yml```
-
->(https://github.com/keta410/swarm02/blob/main/apache-php/.docker/docker-compose.yml)
+</p>
+</details>
 
 <ins>Description of ```docker-compose.yml``` </ins> :
 
-คำอธิบายของ ```docker-compose.yml``` 
+(คำอธิบายของ ```docker-compose.yml```) 
 
-The description of treafik setting is mostly in swarm01. The same principle applies จาก swarm02 deploy, but there are additional resources and limits in the deploy section. These define the machines that can upload this app
+The description of treafik setting is mostly in swarm01. The same principle applies swarm02 deploy, but there are additional resources and limits in the deploy section. These define the machines that can upload this app
 
-คำอธิบายเกี่ยวกับการตั้งค่า [treafik](https://github.com/keta410/swarm01#step-1-create-folder-and-file-for-app) ส่วนใหญ่ใน swarm01 ใช้หลักเดียวกัน แต่มีเพิ่มเติมมาคือ resource และ limit ที่อยู่ในส่วน deploy โดยพวกนี้จะกำหนดเครื่องที่สามารถอัพ app นี้ได้
-____________
+(คำอธิบายเกี่ยวกับการตั้งค่า [treafik](https://github.com/keta410/swarm01#step-1-create-folder-and-file-for-app) ส่วนใหญ่ใน swarm01 จะใช้หลักเดียวกันใน swarm02 แต่มีเพิ่มเติมมาคือ resource และ limit ที่อยู่ในส่วน deploy โดยพวกนี้จะกำหนดเครื่องที่สามารถอัพ app นี้ได้)
 
-### **Step 4** Deploy on Portainer(.xops.ipv9.me)
-**ขั้นตอนที่ 4** Deploy ขึ้น Portainer(.xops.ipv9.me)
+_____________________________________
+### **Step 2** Deploy on Portainer(.xops.ipv9.me)
+ขั้นตอนที่ 2 Deploy ขึ้น Portainer(.xops.ipv9.me)
 _____________________________________
 
 *   Base Deploy on Portainer from [swarm01](https://github.com/keta410/swarm01#step-2-deploy-on-portainerxopsipv9me) 
 customize code base on this app
 
-    
-    อิงการ Deploy on Portainer(.xops.ipv9.me) จาก [swarm01](https://github.com/keta410/swarm01#step-2-deploy-on-portainerxopsipv9me) ปรับแต่งตัวให้สอดคล้องกับ App นี้
+    (อิงการ Deploy on Portainer(.xops.ipv9.me) จาก [swarm01](https://github.com/keta410/swarm01#step-2-deploy-on-portainerxopsipv9me) ปรับแต่งตัวให้สอดคล้องกับ App นี้)
 
+_____________________________________
+### **Create Image on Portainer**
+สร้าง Image บน Portainer
+_____________________________________
+
+1. Press Images (กด Images)
+
+2. Click [**Build a new image**] and set name's image
+
+    (คลิก [**Build a new image**] และตั้งค่าชื่อ image) 
+
+<ins>Format</ins>
+
+```
+    Github account/ application name : version
+
+    //I set it (ที่ตั้งค่าไว้)>> keta410/apache-php:v1  
+```
+
+3. Click [**Web editor**] and Copy code from file ```Dockerfile```
+
+    (คลิก [**Web editor**] และ Copy code จาก file ```Dockerfile```)
+
+![setName-code-image](https://user-images.githubusercontent.com/104758471/222944709-0cfc5513-1a8b-4287-baf8-40a1dd208eb2.jpg)
+
+Then Click [**Build the image**] (จากนั้นคลิก [**Build the image**])
+
+![Screenshot 2023-03-02 171423](https://user-images.githubusercontent.com/104758471/222944824-1dfd5287-0adc-47ea-b6c9-bc96909c8a41.png)
+
+______________________________________________________
+
+### **Expected Result**
+ผลลัพธ์ที่คาดว่าจะได้รับ
+______________________________________________________
+
+* After add stack (หลัง add stack)
+
+* Web browsers, I configure can access Apache-PHP (เว็บเบราว์เซอร์ที่เรากำหนดให้สามารถเข้าถึง Apache-PHP ได้)
+
+* Create Image on portainer (สร้าง Image บน portainer)
+
+When the Image is created, the following appearance will be displayed (เมื่อสร้าง Image เสร็จจะปรากฏหน้าตาดังนี้)
+
+![dis-image-complete](https://user-images.githubusercontent.com/104758471/222945083-e352818f-b2c5-48ed-98fe-4487b9d81520.jpg)
+
+______________________________________________________
+
+### **Working Principle in docker-compose**
+หลักการทำงานใน docker-compose
+______________________________________________________
+
+**<ins>Under the ```docker-compose.yml``` of the app [*apache-php*] is specified</ins>** :
+
+(ภายใต้การทำงานของ ```docker-compose.yml``` ของ app [*apache-php*] มีการระบุ)
+
+- This version of the compose file directly, we can specify any version that is supported by the app we choose, in this case choose 3.3
+
+    (Version ของ compose file โดยตรงนี้ เราสามารถระบุเป็น version ที่เท่าไหร่ก็ได้ที่สนับสนุนกับ app ที่เราเลือก ในที่นี้เลือก 3.3)
+
+- Service specifies a container to use. Here we have web. Inside our container we have image, command, volumes, networks, environment and deploy etc.
+
+    (Service ใช้ระบุ container ที่จะใช้ ในที่นี้มี web โดยภายใน container เรานี้ประกอบไปด้วย image, command, volumes, networks, environment และ deploy เป็นต้น)
+
+- Volumes are used to create storage. This is different from the volumes in the service because that section is linked to the individual volumes of the created container.
+
+    (Volumes ใช้สร้างที่เก็บข้อมูล ซึ่งแตกต่างจาก volumes ที่อยู่ใน service เพราะตรงในส่วนนั้นจะเป็นการเชื่อม volumes แต่ละตัว container ที่สร้างไว้)
+
+- Networks are connections of existing or self-contained, networks communicating with compose files.
+
+    (Networks เป็นการเชื่อมต่อกันของ network ที่มีหรือสร้างเอง สื่อสารกับ compose file)
+
+- Dockerfile
+
+**<ins>Summary</ins>**
+
+When command ```docker compose up -d``` or Click right the ```docker-compose.yml``` file, then select [**Compose Up**]. this will cause the container to be created, the network will record the data specified for each on the container, the port that is specified or a domain name that uses traefik to help manage as we define, because the apache-php has a Dockerfile that we have made in Image format and have retrieved this part in docker-compose.yml through the image inside the service, so it can be used and displayed as we specify.
+
+(เมื่อคำสั่ง docker compose up -d หรือคลิกขวาที่ docker-compose.yml แล้วเลือก Compose Up นี้ขึ้นไปจะทำให้มีการสร้างตัว container ,network มีการบันทึกข้อมูลตามที่กำหนดไว้ในแต่ละตัวบน container, port ที่ถูกระบุใช้งาน หรือชื่อโดเมนที่มีการใช้ traefik ช่วยในการจัดการ และเนื่องจากตัวของ apache-php มี Dockerfile ที่เราได้ทำให้อยู่ในรูปแบบ Image และมีการดึงข้อมูลตรงส่วนนี้ใน docker-compose.yml ผ่าน image ข้างใน service จึงทำให้สามารถใช้งานและแสดงผลตามที่เรากำหนดได้)
+
+(**<ins>สรุป</ins>**
+
+เมื่อสั่ง ```docker compose up -d``` หรือคลิกขวาที่ไฟล์ ```docker-compose.yml``` เลือก [**Compose Up**] ขึ้นไปจะทำให้มีการสร้างตัว container ,network มีการบันทึกข้อมูลตามที่กำหนดไว้ในแต่ละตัวบน container, port ที่ถูกระบุใช้งาน หรือชื่อโดเมนที่มีการใช้ traefik ช่วยในการจัดการตามที่เรากำหนด)
