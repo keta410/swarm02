@@ -4,14 +4,21 @@
 
 **Wakatime Project: swarm02**=> https://wakatime.com/@spcn22/projects/eqzruwyrqd
 
+
 **Ref** : 
+
+App [apache-php], I want deploy on portainer
+
+App [apache-php] ที่ต้องการ deploy บน portainer
+
 >https://github.com/docker/awesome-compose/tree/master/apache-php  
 
-App, I want deploy on portainer
+The Example for code about treafik
+
+ตัวอย่าง code เกี่ยวกับ traefik
 
 >https://github.com/pitimon/dockerswarm-inhoure/blob/main/ep04-hello-world-revProxy/hello-world-https.yml 
 
-The Example for code about treafik
 _____________________________________
 
 ### **Step 1** Create Folder and File for App
@@ -41,6 +48,8 @@ _____________________________________
 
 3. Code ```Dockerfile``` and ```index.php```
 
+    Code ```Dockerfile``` และ ```index.php```
+
 3.1 ```Dockerfile``` 
 
 ```dockerfile
@@ -58,7 +67,7 @@ _____________________________________
 
 ```
 
-3.2```index.php```
+3.2 ```index.php```
 ```php
 #webage
 
@@ -70,13 +79,19 @@ _____________________________________
 ```
 All these files are in a folder named **app**
 
+file ทั้งหมดนี้อยู่ใน folder ที่ชื่อว่า **app**
+
 4. Create Image on Portainer
 
-4.1 Press Images
+    สร้าง Image บน Portainer
 
-    กด Images
+4.1 Press Images 
+
+กด Images
 
 4.2 Click [**Build a new image**] and set name's image
+
+คลิก [**Build a new image**] และตั้งค่าชื่อ image 
 
 <ins>Format</ins>
 
@@ -106,25 +121,24 @@ When the Image is created, the following appearance will be displayed
 
 5. Code ```docker-compose.yml``` 
 
-    5.1 ```docker-compose.yml``` ()
+    5.1 ```docker-compose.yml``` 
 
 ```docker
 version: '3.3'  
-#Version Docker for you want
+#Config version docker for you want (กำหนด version docker ที่เราต้องการ)
 
 service: 
-    web:    
-    #Name of app
+    web:    #App
         image: keta410/apache-php:v1
-        #I change for my image(I created in Docker Hub)
+        #It from my image(I created in Docker Hub)
+        #มาจาก image ที่สร้างเองใน Docker Hub 
         .
         networks:
             - webproxy  
-            #Name's network
         .
         .
         deploy:     
-        #for install on portainer(xops.ipv9.me)
+        #for upload on portainer[xops.ipv9.me] (สำหรับ upload ขึ้นบน portainer[xops.ipv9.me])
     
             replicas: 1
             labels:
@@ -135,26 +149,46 @@ service:
                 - traefik.http.routers.${APPNAME}-https.tls.certresolver=default
                 - traefik.http.services.${APPNAME}.loadbalancer.server.port=80
 
-            resources:
-                reservations:
+    #Additional section (ส่วนที่เพิ่มเติม)
+            resources:                  #Active resources that match the scope defined in resources and limits
+                                        #(ทรัพยากรที่ใช้งานกับตัวที่ตรงกับขอบเขตที่เรากำหนดใน reseurces และ limits)
+                reservations:           
                     cpus: '0.1'
                     memory: 8M
-                limits:
+                limits:                 
                     cpus: '0.4'
                     memory: 64M
 volumes:
-    .
+    app:
+
 network:
     webproxy:
         external: ture  
 
 ``` 
+
 Full code in ```docker-compose.yml```
->(website)
 
+Code เต็มอยู่ใน ```docker-compose.yml```
+
+>(https://github.com/keta410/swarm02/blob/main/apache-php/.docker/docker-compose.yml)
+
+<ins>Description of ```docker-compose.yml``` </ins> :
+
+คำอธิบายของ ```docker-compose.yml``` 
+
+The description of treafik setting is mostly in swarm01. The same principle applies จาก swarm02 deploy, but there are additional resources and limits in the deploy section. These define the machines that can upload this app
+
+คำอธิบายเกี่ยวกับการตั้งค่า [treafik](https://github.com/keta410/swarm01#step-1-create-folder-and-file-for-app) ส่วนใหญ่ใน swarm01 ใช้หลักเดียวกัน แต่มีเพิ่มเติมมาคือ resource และ limit ที่อยู่ในส่วน deploy โดยพวกนี้จะกำหนดเครื่องที่สามารถอัพ app นี้ได้
+____________
+
+### **Step 4** Deploy on Portainer(.xops.ipv9.me)
+**ขั้นตอนที่ 4** Deploy ขึ้น Portainer(.xops.ipv9.me)
 _____________________________________
 
-### **Step ** Deploy on Portainer(.xops.ipv9.me)
-**ขั้นตอนที่ ** Deploy ขึ้น Portainer(.xops.ipv9.me)
-_____________________________________
+*   Base Deploy on Portainer from [swarm01](https://github.com/keta410/swarm01#step-2-deploy-on-portainerxopsipv9me) 
+customize code base on this app
+
+    
+    อิงการ Deploy on Portainer(.xops.ipv9.me) จาก [swarm01](https://github.com/keta410/swarm01#step-2-deploy-on-portainerxopsipv9me) ปรับแต่งตัวให้สอดคล้องกับ App นี้
 
