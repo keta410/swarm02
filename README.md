@@ -51,11 +51,11 @@ _____________________________________
 
 3.1 ```Dockerfile``` 
 
-<details><summary><ins>CLICK SHOW (Dockerfile)</ins></summary>
+<details><summary><ins>CLICK SHOW Dockerfile</ins></summary>
 <p>
 
 ```ruby
-    CMD ["apache2-foreground"]  #command for ..
+    CMD ["apache2-foreground"]
     
     FROM builder as devs-envs   
 
@@ -73,15 +73,20 @@ _____________________________________
 </details>
 
 3.2 ```index.php```
-```php
-#webage
+<details><summary><ins>CLICK SHOW index.php</ins></summary>
+<p>
+    ```ruby
 
     '<center><h1>Hello World</h></center>'
     '<center><h5> SPCN22 </h5></center>'
 
-//center-> aglin the text in the center (กำหนดตำแหน่งของข้อความ)
-//h1,h5-> size font (ขนาดตัวอักษร)
-```
+    //center-> aglin the text in the center (กำหนดตำแหน่งของข้อความ)
+    //h1,h5-> size font (ขนาดตัวอักษร)
+    ```
+
+</p>
+</details>
+
 **All these files are in a folder named *app*** (file ทั้งหมดนี้อยู่ใน folder ที่ชื่อว่า *app*)
 
 4. **Code ```docker-compose.yml```** 
@@ -137,14 +142,6 @@ network:
 </p>
 </details>
 
-**<ins>Description of ```docker-compose.yml``` </ins>** :
-
-(คำอธิบายของ ```docker-compose.yml```) 
-
-The description of treafik setting is mostly in swarm01. The same principle applies swarm02 deploy, but there are additional resources and limits in the deploy section. These define the machines that can upload this app
-
-(คำอธิบายเกี่ยวกับการตั้งค่า [treafik](https://github.com/keta410/swarm01#step-1-create-folder-and-file-for-app) ส่วนใหญ่ใน swarm01 จะใช้หลักเดียวกันใน swarm02 แต่มีเพิ่มเติมมาคือ resource และ limit ที่อยู่ในส่วน deploy โดยพวกนี้จะกำหนดเครื่องที่สามารถอัพ app นี้ได้)
-
 _____________________________________
 ### **Step 2** Deploy on Portainer(.xops.ipv9.me)
 ขั้นตอนที่ 2 Deploy ขึ้น Portainer(.xops.ipv9.me)
@@ -188,8 +185,9 @@ ______________________________________________________
 ______________________________________________________
 
 * **After add stack** (หลัง add stack)
-
+![Screenshot 2023-03-11 222010](https://user-images.githubusercontent.com/104758471/224492654-4ef05983-7f8a-4ead-a9dd-ce5ffc94571e.png)
 * **Web browsers, I configure can access Apache-PHP** (เว็บเบราว์เซอร์ที่เรากำหนดให้สามารถเข้าถึง Apache-PHP ได้)
+![image](https://user-images.githubusercontent.com/104758471/224492779-9958357d-670e-44ca-a54a-83154c3f94a6.png)
  
 * **Create Image on portainer** (สร้าง Image บน portainer)
 
