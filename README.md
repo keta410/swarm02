@@ -15,15 +15,17 @@
 
 >https://github.com/pitimon/dockerswarm-inhoure/blob/main/ep04-hello-world-revProxy/hello-world-https.yml 
 
+>https://docs.docker.com/engine/reference/builder/#cmd
+
 Contents swarm02 (สารบัญเนื้อหา swarm02)
 -----------------
 No. |English Title (ชื่อเรื่องภาษาอังกฤษ)  | Thai Title (ชื่อเรื่องภาษาไทย) |
 ----- |----- | ----- |
 1)|[Step 1 Create Folder and File for APP](https://github.com/keta410/swarm02#step-1-create-folder-and-file-for-app)|ขั้นตอนที่ 1 สร้าง Folder และ File สำหรับ APP|
-3)|[Step 2 Deploy on Portainer(.xops.ipv9.me)]()|ขั้นตอนที่ 2 การ Deploy ขึ้นบน Portainer(.xops.ipv9.me)|
-4)|[Create Image on Portianer]()|สร้าง Image บน Portainer|
-5)|[Expected Result]()|ผลลัพธ์ที่คาดว่าจะได้รับ|
-6)|[Working Principle in docker-compose]()|หลักการทำงานใน docker-compose|
+2)|[Step 2 Deploy on Portainer(.xops.ipv9.me)](https://github.com/keta410/swarm02#step-2-deploy-on-portainerxopsipv9me)|ขั้นตอนที่ 2 การ Deploy ขึ้นบน Portainer(.xops.ipv9.me)|
+3)|[Create Image on Portianer](https://github.com/keta410/swarm02#create-image-on-portainer)|สร้าง Image บน Portainer|
+4)|[Expected Result](https://github.com/keta410/swarm02#expected-result)|ผลลัพธ์ที่คาดว่าจะได้รับ|
+5)|[Working Principle in docker-compose](https://github.com/keta410/swarm02#working-principle-in-docker-compose)|หลักการทำงานใน docker-compose|
 _____________________________________
 
 ### **Step 1** Create Folder and File for App
